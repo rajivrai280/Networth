@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rajiv Singh | Financial Dashboard</title>
+    <style>
+        :root {
+            --primary: #00f2ff;
+            --secondary: #7000ff;
+            --bg: #050505;
+            --glass: rgba(255, 255, 255, 0.05);
+            --border: rgba(255, 255, 255, 0.1);
+            --shadow: 0 40px 100px rgba(0, 0, 0, 0.7);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(112, 0, 255, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(0, 242, 255, 0.1) 0%, transparent 40%);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 900px;
+            padding: 50px;
+            background: var(--glass);
+            backdrop-filter: blur(25px);
+            border: 1px solid var(--border);
+            border-radius: 40px;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+
+        /* Profile Header Section */
+        .profile-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 40px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 25px;
+        }
+
+        .profile-pic-container {
+            position: relative;
+        }
+
+        .profile-pic {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            border: 2px solid var(--border);
+            object-fit: cover;
+            object-position: center top;
+        }
+
+        .user-meta {
+            margin-left: 20px;
+        }
+
+        .user-name {
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            background: linear-gradient(to right, #fff, #bbb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .title {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #888;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .badge {
+            font-size: 0.7rem;
+            padding: 6px 14px;
+            background: rgba(0, 242, 255, 0.1);
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .notification-bell {
+            font-size: 1.2rem;
+            color: #666;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .notification-bell::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 8px;
+            height: 8px;
+            background-color: var(--secondary);
+            border-radius: 50%;
+        }
+
+        /* Net Worth Section */
+        .net-worth-header {
+            text-align: left;
+            margin-bottom: 40px;
+        }
+
+        .net-worth-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #666;
+        }
+
+        .total-value {
+            font-size: 5rem;
+            font-weight: 900;
+            margin-top: 12px;
+            background: linear-gradient(135deg, #fff 0%, var(--primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -2px;
+        }
+
+        /* Asset Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border);
+            padding: 35px 25px;
+            border-radius: 28px;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: var(--primary);
+            transform: scale(1.04);
+            box-shadow: 0 10px 30px rgba(0, 242, 255, 0.05);
+        }
+
+        .card h3 {
+            font-size: 0.8rem;
+            color: #888;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .card .amount {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .grid { grid-template-columns: 1fr; }
+            .total-value { font-size: 3.8rem; }
+            .container { padding: 35px; }
+            .profile-header { flex-direction: column; text-align: center; gap: 15px; }
+            .user-meta { margin: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="profile-header">
+            <div style="display: flex; align-items: center;">
+                <div class="profile-pic-container">
+                    <img src=https://i.pinimg.com/736x/3e/b9/d7/3eb9d7658c19eb030b217de05740f108.jpg alt="Rajiv Singh" class="profile-pic">
+                </div>
+                <div class="user-meta">
+                    <h2 class="user-name">RAJIV SINGH</h2>
+                    <p class="title">Founder | Investor</p>
+                </div>
+            </div>
+            <div class="header-actions">
+                <div class="badge">Devloper</div>
+                <div class="notification-bell">🔔</div>
+            </div>
+        </div>
+
+        <div class="net-worth-header">
+            <span class="net-worth-label">Consolidated Net Worth</span>
+            <div class="total-value">$5</div>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <h3>Cash & Equivalents</h3>
+                <div class="amount">$4</div>
+            </div>
+
+            <div class="card">
+                <h3>Investment</h3>
+                <div class="amount">$2</div>
+            </div>
+
+            <div class="card">
+                <h3>Digital Assets</h3>
+                <div class="amount">$0</div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
